@@ -36,6 +36,7 @@ The backend of the game will be built with JavaScript and the frontend will be r
  * Figure out how to keep track of the debris
  * Rotate the debris as more are added
  * Create ships at random intervals from left and right
+ 
 **Day 4:** Style the frontend and complete code to be bug-free. Goals for the day:
  * Have a styled title and score
  * Tie up any loose ends
