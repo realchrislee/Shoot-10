@@ -23,27 +23,28 @@ function Turret(tH) {
       if (this.bullets[0] != null) {
         this.bullets[i].update();
       }
-      if (this.bullets[i].y < 0) {
+      if (this.bullets[i].y < 0 || this.bullets[i].y > 320 || this.bullets[i].x < 0 || this.bullets[i].x > 720) {
         this.bullets.splice(i, 1);
       }
     }
     this.draw();
   };
 
-  this.hitDetect = function(s, si) {
-    for (let i = 0; i < this.bullets.length; i++) {
-      var b = this.bullets[i];
-    }
-  };
+  // this.hitDetect = function(s, si) {
+  //   for (let i = 0; i < this.bullets.length; i++) {
+  //     var b = this.bullets[i];
+  //   }
+  // };
 }
 
 
 //bullet params
-function Bullet(bDY = 0) {
-  this.x = (canvas.width/2) - 5;
-  this.y = canvas.height - tH;
-  this.w = 13;
+function Bullet(x, y, bDX = 0, bDY = 0) {
+  this.x = x;
+  this.y = y;
+  this.w = 12;
   this.h = 10;
+  this.bDX = bDX;
   this.bDY = bDY;
 
   // bullet
@@ -54,6 +55,7 @@ function Bullet(bDY = 0) {
 
   this.update = function() {
     this.y -= bDY;
+    this.x -= bDX;
     this.draw();
   };
 }
