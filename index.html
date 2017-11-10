@@ -3,13 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Shoot 10</title>
-    <style>
+    <style type='text/css'>
+      body {
+        background: #2B4162;
+      }
+      h1 {
+        margin: 0 auto;
+        font-size: 70px;
+        width: 260px;
+        color: rgba(255,255,255,.6);
+      }
       canvas {
-        border: 1px solid black;
+        border: 5px solid black;
+        margin: 100px auto;
+        display: block;
+        background: white;
       }
     </style>
   </head>
   <body>
-    <canvas id="canvas" width="300" height="300"></canvas>
+    <h1>Shoot 10</h1>
+    <canvas id="canvas" width="720" height="320"></canvas>
+    <script src="turret.js"></script>
+    <script src="ship.js"></script>
+    <script src="board.js"></script>
   </body>
 </html>
