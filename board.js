@@ -93,9 +93,10 @@ function animateBoard() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   Score(score);
+  bulletDisplay.forEach(bullet => {
+    bullet.update();
+  });
   turret.draw();
-  turret.clean();
-  removeBullets();
   // console.log(turret.bullets);
   // turret.bullets.forEach(bullet => {
   //
@@ -103,9 +104,6 @@ function animateBoard() {
   // });
 
 
-  bulletDisplay.forEach(bullet => {
-    bullet.update();
-  });
 
   shipArray.forEach((s, i) => {
     for (let j = 0; j < turret.bullets.length; j++) {
@@ -126,35 +124,36 @@ function animateBoard() {
           shipsToRemove.push(i);
         }
         bulletsToAdd.push(
-          new Bullet(s.x, s.y+10, 5),
-          new Bullet(s.x, s.y+10, -5),
-          new Bullet(s.x, s.y+10, 0, 5),
-          new Bullet(s.x, s.y+10, 0, -5),
-          new Bullet(s.x, s.y+10, 2, 2),
-          new Bullet(s.x, s.y+10, -2, -2),
-          new Bullet(s.x, s.y+10, 2, -2),
-          new Bullet(s.x, s.y+10, -2, 2),
-          new Bullet(s.x, s.y+10, 1, 4),
-          new Bullet(s.x, s.y+10, -1, 4),
-          new Bullet(s.x, s.y+10, 1, -4),
-          new Bullet(s.x, s.y+10, -1, -4),
-          new Bullet(s.x, s.y+10, 4, 1),
-          new Bullet(s.x, s.y+10, 4, -1),
-          new Bullet(s.x, s.y+10, -4, -1),
-          new Bullet(s.x, s.y+10, -4, 1)
+          new Bullet(s.x, s.y, 5),
+          new Bullet(s.x, s.y, -5),
+          // new Bullet(s.x, s.y, 0, 5),
+          // new Bullet(s.x, s.y, 0, -5),
+          new Bullet(s.x, s.y, 2, 2),
+          new Bullet(s.x, s.y, -2, -2),
+          new Bullet(s.x, s.y, 2, -2),
+          new Bullet(s.x, s.y, -2, 2),
+          new Bullet(s.x, s.y, 1, 4),
+          new Bullet(s.x, s.y, -1, 4),
+          new Bullet(s.x, s.y, 1, -4),
+          new Bullet(s.x, s.y, -1, -4),
+          new Bullet(s.x, s.y, 4, 1),
+          new Bullet(s.x, s.y, 4, -1),
+          new Bullet(s.x, s.y, -4, -1),
+          new Bullet(s.x, s.y, -4, 1)
         );
         // Flash.draw();
         // Flash.update();
       }
     }
   });
-  
   removeShips();
+  removeBullets();
+  turret.clean();
   removeBullets();
   addBullets();
 
   shipArray.forEach((s, i) => {
-    if (s.x < -20 || s.x > 740) {
+    if (s.x < -10 || s.x > 730) {
       if (shipsToRemove.includes(i)) {
         return;
       } else {
