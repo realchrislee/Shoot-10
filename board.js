@@ -148,9 +148,9 @@ function animateBoard() {
   });
   removeShips();
   removeBullets();
+  addBullets();
   turret.clean();
   removeBullets();
-  addBullets();
 
   shipArray.forEach((s, i) => {
     if (s.x < -10 || s.x > 730) {
