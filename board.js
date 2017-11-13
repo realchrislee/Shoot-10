@@ -148,12 +148,10 @@ function animateBoard() {
       }
     }
   });
-
-  addBullets();
-
-  removeBullets();
-
+  
   removeShips();
+  removeBullets();
+  addBullets();
 
   shipArray.forEach((s, i) => {
     if (s.x < -20 || s.x > 740) {
