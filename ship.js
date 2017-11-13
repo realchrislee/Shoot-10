@@ -1,12 +1,16 @@
-function Ship(x, tX, y, dX) {
+function Ship(x, tX, y, dX, sprite) {
   this.x = x;
   this.tX = tX;
   this.y = y;
   this.dX = dX;
   this.w = 35;
   this.h = 30;
+  this.sprite = sprite;
 
   this.draw = function() {
+    let image = new Image();
+    image.src = this.sprite;
+
     ctx.fillStyle = 'blue';
     // ctx.beginPath();
     // ctx.moveTo(this.x, this.y + 10);
@@ -14,8 +18,8 @@ function Ship(x, tX, y, dX) {
     // ctx.lineTo(this.x + this.tX, this.y - 15);
     // ctx.lineTo(this.x, this.y - 10);
     // ctx.fill();
-
-    ctx.fillRect(this.x, this.y, this.w, this.h);
+    ctx.drawImage(image, this.x, this.y, this.w, this.h);
+    // ctx.fillRect(this.x, this.y, this.w, this.h);
   };
 
   this.update = function() {
@@ -37,13 +41,15 @@ function generateShip() {
   let rY = ySet[Math.floor(Math.random() * 5)];
   let dXSet = [1.2, -1.2];
   let dX = dXSet[shipNum];
-  let ship = new Ship(frontX, tailX, rY, dX);
+  let spriteSet = ['./images/shipRight4.png', './images/shipLeft4.png'];
+  let spriteLoc = spriteSet[shipNum];
+  let ship = new Ship(frontX, tailX, rY, dX, spriteLoc);
   return ship;
 }
 
 setInterval(() => {
   shipArray.push(generateShip());
-}, 600);
+}, 500);
 console.log(shipArray);
 
 // function animateShip() {

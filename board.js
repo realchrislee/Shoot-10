@@ -1,18 +1,5 @@
 let pressed = false;
 
-let bulletDisplay = [
-  new Bullet(15, 10),
-  new Bullet(30, 10),
-  new Bullet(45, 10),
-  new Bullet(60, 10),
-  new Bullet(75, 10),
-  new Bullet(90, 10),
-  new Bullet(105, 10),
-  new Bullet(120, 10),
-  new Bullet(135, 10),
-  new Bullet(150, 10),
-];
-
 document.addEventListener('keydown', (e) => {
   if (e.keyCode == 32 && pressed == false) {
     bDX = 2;
@@ -49,13 +36,40 @@ document.addEventListener('mousedown', (e) => {
   }
 });
 
+function Flash() {
+  this.o = 1;
+  this.draw = function() {
+    ctx.fillStyle = `rgba(255,255,255,${o})`;
+    ctx.fillReact(0, 0, canvas.width, canvas.height);
+  };
+
+  this.update = function() {
+    o -= 1;
+  };
+}
+
+let background = new Image();
+background.src = './images/Background2.jpg';
+
+
 
 const turret = new Turret(tH);
 
 function animateBoard() {
   requestAnimationFrame(animateBoard);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  turret.update();
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+  turret.draw();
+  turret.bullets.forEach(bullet => {
+    // if (bullet.y < 0 || bullet.y > 320 || bullet.x < 0 || bullet.x > 720) {
+    //     if (bulletsToRemove.includes(i)) {
+    //       return;
+    //     } else {
+    //       bulletsToRemove.push(i);
+    //     }
+    //   }
+    bullet.update();
+  });
 
   bulletDisplay.forEach(bullet => {
     bullet.update();
@@ -64,21 +78,67 @@ function animateBoard() {
   shipArray.forEach((s, i) => {
     for (let j = 0; j < turret.bullets.length; j++) {
       let b = turret.bullets[j];
-      if (b.x+b.w >= s.x && b.x <= s.x+s.w && b.y >= s.y && b.y <= s.y+s.h) {
-        turret.bullets.splice(j, 1);
-        shipArray.splice(i, 1);
+      if (b.x+b.w >= s.x && b.x <= s.x+s.w && b.y+b.h >= s.y && b.y <= s.y+s.h) {
+        if (!bulletsToRemove.includes(j) || !shipsToRemove.includes(i)) {
+          bulletsToRemove.push(j);
+          shipsToRemove.push(i);
+        }
+        bulletsToAdd.push(
+          new Bullet(s.x, s.y+10, 6),
+          new Bullet(s.x, s.y+10, -6),
+          new Bullet(s.x, s.y+10, 0, 6),
+          new Bullet(s.x, s.y+10, 0, -6),
+          new Bullet(s.x, s.y+10, 3, 3),
+          new Bullet(s.x, s.y+10, -3, -3),
+          new Bullet(s.x, s.y+10, 3, -3),
+          new Bullet(s.x, s.y+10, -3, 3),
+          new Bullet(s.x, s.y+10, 2, 5),
+          new Bullet(s.x, s.y+10, -2, 5),
+          new Bullet(s.x, s.y+10, 2, -5),
+          new Bullet(s.x, s.y+10, -2, -5),
+          new Bullet(s.x, s.y+10, 5, 2),
+          new Bullet(s.x, s.y+10, 5, -2),
+          new Bullet(s.x, s.y+10, -5, -2),
+          new Bullet(s.x, s.y+10, -5, 2)
+        );
+        // Flash.draw();
+        // Flash.update();
+        // turret.bullets.splice(j, 1);
+        // shipArray.splice(i, 1);
       }
     }
   });
 
   shipArray.forEach((s, i) => {
     if (s.x < -20 || s.x > 740) {
-      shipArray.splice(i, 1);
+      if (shipsToRemove.includes(i)) {
+        return;
+      } else {
+        shipsToRemove.push(i);
+      }
+      // shipArray.splice(i, 1);
     } else {
       s.update();
     }
   });
 
+  bulletsToRemove.forEach(bulletIdx => {
+    turret.bullets.splice(bulletIdx, 1);
+  });
+
+  bulletsToRemove = [];
+
+  bulletsToAdd.forEach(bullet => {
+    turret.bullets.push(bullet);
+  });
+
+  bulletsToAdd = [];
+
+  shipsToRemove.forEach(shipIdx => {
+    shipArray.splice(shipIdx, 1);
+  });
+
+  shipsToRemove = [];
 
   // if (turret.bullets[0] == null && turret.count >= 10) {
   //   alert('Game Over!');
