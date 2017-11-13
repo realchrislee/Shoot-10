@@ -2,7 +2,7 @@ let pressed = false;
 
 document.addEventListener('keydown', (e) => {
   if (e.keyCode == 32 && pressed == false) {
-    bDX = 2;
+    // bDX = 2;
     //limit bullets to 10
     if (turret.count >= 10) {
       console.log('No more bullets');
@@ -24,7 +24,7 @@ document.addEventListener('keyup', (e) => {
 document.addEventListener('mousedown', (e) => {
   e.preventDefault();
   if (e.target.id == 'canvas') {
-    bDX = 2;
+    // bDX = 2;
     //limit bullets to 10
     if (turret.count >= 10) {
       console.log('No more bullets');
@@ -126,22 +126,22 @@ function animateBoard() {
           shipsToRemove.push(i);
         }
         bulletsToAdd.push(
-          new Bullet(s.x, s.y+10, 6),
-          new Bullet(s.x, s.y+10, -6),
-          new Bullet(s.x, s.y+10, 0, 6),
-          new Bullet(s.x, s.y+10, 0, -6),
-          new Bullet(s.x, s.y+10, 3, 3),
-          new Bullet(s.x, s.y+10, -3, -3),
-          new Bullet(s.x, s.y+10, 3, -3),
-          new Bullet(s.x, s.y+10, -3, 3),
-          new Bullet(s.x, s.y+10, 2, 5),
-          new Bullet(s.x, s.y+10, -2, 5),
-          new Bullet(s.x, s.y+10, 2, -5),
-          new Bullet(s.x, s.y+10, -2, -5),
-          new Bullet(s.x, s.y+10, 5, 2),
-          new Bullet(s.x, s.y+10, 5, -2),
-          new Bullet(s.x, s.y+10, -5, -2),
-          new Bullet(s.x, s.y+10, -5, 2)
+          new Bullet(s.x, s.y+10, 5),
+          new Bullet(s.x, s.y+10, -5),
+          new Bullet(s.x, s.y+10, 0, 5),
+          new Bullet(s.x, s.y+10, 0, -5),
+          new Bullet(s.x, s.y+10, 2, 2),
+          new Bullet(s.x, s.y+10, -2, -2),
+          new Bullet(s.x, s.y+10, 2, -2),
+          new Bullet(s.x, s.y+10, -2, 2),
+          new Bullet(s.x, s.y+10, 1, 4),
+          new Bullet(s.x, s.y+10, -1, 4),
+          new Bullet(s.x, s.y+10, 1, -4),
+          new Bullet(s.x, s.y+10, -1, -4),
+          new Bullet(s.x, s.y+10, 4, 1),
+          new Bullet(s.x, s.y+10, 4, -1),
+          new Bullet(s.x, s.y+10, -4, -1),
+          new Bullet(s.x, s.y+10, -4, 1)
         );
         // Flash.draw();
         // Flash.update();
