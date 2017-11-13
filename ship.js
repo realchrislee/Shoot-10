@@ -49,4 +49,4 @@ function generateShip() {
 
 setInterval(() => {
   shipArray.push(generateShip());
-}, 500);
+}, 600);
