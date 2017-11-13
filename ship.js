@@ -50,13 +50,3 @@ function generateShip() {
 setInterval(() => {
   shipArray.push(generateShip());
 }, 500);
-console.log(shipArray);
-
-// function animateShip() {
-//   requestAnimationFrame(animateShip);
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-//   animateTurret();
-//   animateBullet();
-//
-//   shipArray.forEach(ship => ship.update());
-// }
