@@ -146,9 +146,9 @@ function animateBoard() {
       }
     }
   });
-  removeShips();
-  removeBullets();
   turret.clean();
+  removeBullets();
+  removeShips();
   removeBullets();
   addBullets();
 
