@@ -109,10 +109,10 @@ function animateBoard() {
     for (let j = 0; j < turret.bullets.length; j++) {
       let b = turret.bullets[j];
       if (
-        b.x < s.x + s.w &&
-        b.x + b.w > s.x &&
-        b.y < s.y + s.h &&
-        b.h + b.y > s.y &&
+        s.x < b.x + b.w &&
+        s.x + s.w > b.x &&
+        s.y < b.y + b.h &&
+        s.h + s.y > b.y &&
         b.x < canvas.width &&
         b.x > 0 &&
         b.y > 0 &&
@@ -126,8 +126,8 @@ function animateBoard() {
         bulletsToAdd.push(
           new Bullet(s.x, s.y, 5),
           new Bullet(s.x, s.y, -5),
-          // new Bullet(s.x, s.y, 0, 5),
-          // new Bullet(s.x, s.y, 0, -5),
+          new Bullet(s.x, s.y, 0, 5),
+          new Bullet(s.x, s.y, 0, -5),
           new Bullet(s.x, s.y, 2, 2),
           new Bullet(s.x, s.y, -2, -2),
           new Bullet(s.x, s.y, 2, -2),
@@ -148,9 +148,9 @@ function animateBoard() {
   });
   removeShips();
   removeBullets();
-  addBullets();
   turret.clean();
   removeBullets();
+  addBullets();
 
   shipArray.forEach((s, i) => {
     if (s.x < -10 || s.x > 730) {

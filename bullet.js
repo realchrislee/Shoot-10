@@ -14,8 +14,8 @@ let bulletDisplay = [
 function Bullet(x, y, bDX = 0, bDY = 0) {
   this.x = x;
   this.y = y;
-  this.w = 12;
-  this.h = 10;
+  this.w = 6;
+  this.h = 4;
   this.bDX = bDX;
   this.bDY = bDY;
 
