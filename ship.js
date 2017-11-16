@@ -6,6 +6,7 @@ function Ship(x, tX, y, dX, sprite) {
   this.w = 35;
   this.h = 30;
   this.sprite = sprite;
+  this.hit = false;
 
   this.draw = function() {
     let image = new Image();

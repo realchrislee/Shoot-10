@@ -85,6 +85,11 @@ function removeShips() {
   shipsToRemove = [];
 }
 
+function incrementScore() {
+  debugger;
+  score++;
+}
+
 const turret = new Turret(tH);
 
 let score = 0;
@@ -116,12 +121,14 @@ function animateBoard() {
         b.x < canvas.width &&
         b.x > 0 &&
         b.y > 0 &&
-        b.y < canvas.height
+        b.y < canvas.height &&
+        s.hit == false
           ){
-        score++;
+            incrementScore();
         if (!bulletsToRemove.includes(j) && !shipsToRemove.includes(i)) {
           bulletsToRemove.push(j);
           shipsToRemove.push(i);
+          s.hit = true;
         }
         bulletsToAdd.push(
           new Bullet(s.x, s.y, 5),
@@ -147,7 +154,6 @@ function animateBoard() {
     }
   });
   turret.clean();
-  removeBullets();
   removeShips();
   removeBullets();
   addBullets();
