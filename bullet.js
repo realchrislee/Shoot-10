@@ -18,6 +18,7 @@ function Bullet(x, y, bDX = 0, bDY = 0) {
   this.h = 4;
   this.bDX = bDX;
   this.bDY = bDY;
+  this.hit = false;
 
   // bullet
   this.draw = function() {

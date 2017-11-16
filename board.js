@@ -122,7 +122,8 @@ function animateBoard() {
         b.x > 0 &&
         b.y > 0 &&
         b.y < canvas.height &&
-        s.hit == false
+        // s.hit === false &&
+        b.hit === false
           ){
             incrementScore();
         if (!bulletsToRemove.includes(j) && !shipsToRemove.includes(i)) {
