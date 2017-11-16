@@ -26,7 +26,7 @@ function Bullet(x, y, bDX = 0, bDY = 0) {
     // bullet.src = './bullet.png';
     // ctx.drawImage(bullet, this.x, this.y, this.w, this.h);
     ctx.fillStyle = 'red';
-    ctx.fillRect(this.x+10, this.y+10, this.w, this.h);
+    ctx.fillRect(this.x+1, this.y+10, this.w, this.h);
   };
 
   this.update = function() {

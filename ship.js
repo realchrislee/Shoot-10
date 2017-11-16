@@ -48,9 +48,9 @@ function generateShip() {
   return ship;
 }
 
-let paused = false;
+let paused = true;
 
-if (!paused) {
+function startShip() {
   setInterval(() => {
     shipArray.push(generateShip());
   }, 600);

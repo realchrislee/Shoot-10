@@ -1,40 +1,111 @@
-let pressed = false;
+// let pressed = false;
+//
+// document.addEventListener('keydown', (e) => {
+//   if (e.keyCode == 32 && pressed == false) {
+//     // bDX = 2;
+//     //limit bullets to 10
+//     if (turret.count >= 10) {
+//       console.log('No more bullets');
+//     } else {
+//       turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
+//       turret.count++;
+//       bulletDisplay.pop();
+//     }
+//     pressed = true;
+//   }
+// });
+//
+// document.addEventListener('keyup', (e) => {
+//   if (e.keyCode == 32) {
+//     pressed = false;
+//   }
+// });
+//
+// document.addEventListener('mousedown', (e) => {
+//   e.preventDefault();
+//   if (e.target.id == 'canvas') {
+//     // bDX = 2;
+//     //limit bullets to 10
+//     if (turret.count >= 10) {
+//       console.log('No more bullets');
+//     } else {
+//       turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
+//       turret.count++;
+//       bulletDisplay.pop();
+//     }
+//   }
+// });
 
-document.addEventListener('keydown', (e) => {
-  if (e.keyCode == 32 && pressed == false) {
-    // bDX = 2;
-    //limit bullets to 10
-    if (turret.count >= 10) {
-      console.log('No more bullets');
-    } else {
-      turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
-      turret.count++;
-      bulletDisplay.pop();
+function addListeners() {
+  let pressed = false;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.keyCode == 32 && pressed == false) {
+      // bDX = 2;
+      //limit bullets to 10
+      if (turret.count >= 10) {
+        console.log('No more bullets');
+      } else {
+        turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
+        turret.count++;
+        bulletDisplay.pop();
+      }
+      pressed = true;
     }
-    pressed = true;
-  }
-});
+  });
 
-document.addEventListener('keyup', (e) => {
-  if (e.keyCode == 32) {
-    pressed = false;
+  document.addEventListener('keyup', (e) => {
+    if (e.keyCode == 32) {
+      pressed = false;
+    }
+  });
+
+  document.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    if (e.target.id == 'canvas') {
+      // bDX = 2;
+      //limit bullets to 10
+      if (turret.count >= 10) {
+        console.log('No more bullets');
+      } else {
+        turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
+        turret.count++;
+        bulletDisplay.pop();
+      }
+    }
+  });
+}
+
+function togglePause() {
+  if (paused) {
+    paused = false;
+  } else {
+    paused = true;
   }
-});
+}
 
 document.addEventListener('mousedown', (e) => {
   e.preventDefault();
   if (e.target.id == 'canvas') {
-    // bDX = 2;
-    //limit bullets to 10
-    if (turret.count >= 10) {
-      console.log('No more bullets');
-    } else {
-      turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
-      turret.count++;
-      bulletDisplay.pop();
-    }
+    startShip();
+    animateBoard();
+    addListeners();
   }
-});
+}, {once: true});
+
+
+function landing() {
+  background();
+  ctx.fillStyle = 'black';
+  ctx.textAlign = 'center';
+  ctx.font = '30px sans-serif';
+  ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 50);
+  ctx.fillText('Click to start', canvas.width/2, 120);
+  ctx.fillText('Left mouse button / spacebar to shoot', canvas.width/2, 190);
+  // ctx.fillText('')
+}
+
+landing();
 
 // function Flash() {
 //   this.o = 1;
@@ -49,7 +120,7 @@ document.addEventListener('mousedown', (e) => {
 // }
 
 function Score(score) {
-  this.x = 620;
+  this.x = 650;
   this.y = 20;
   this.score = 'Score: ' + score.toString();
 
@@ -189,4 +260,4 @@ function animateBoard() {
   // }
 }
 
-animateBoard();
+// animateBoard();
