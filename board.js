@@ -78,8 +78,15 @@ function addBullets() {
 }
 
 function removeShips() {
-  shipsToRemove.forEach(shipIdx => {
-    shipArray.splice(shipIdx, 1);
+  // shipsToRemove.forEach(shipIdx => {
+  //   shipArray.splice(shipIdx, 1);
+  // });
+
+  shipArray.forEach((s, i) => {
+    if (s.hit) {
+      shipArray.splice(i, 1);
+      i--;
+    }
   });
 
   shipsToRemove = [];
@@ -122,13 +129,14 @@ function animateBoard() {
         b.x > 0 &&
         b.y > 0 &&
         b.y < canvas.height &&
-        // s.hit === false &&
-        b.hit === false
+        s.hit === false
+        // b.hit === false
           ){
             incrementScore();
-        if (!bulletsToRemove.includes(j) && !shipsToRemove.includes(i)) {
+        if (!bulletsToRemove.includes(j)) {
+          // && !shipsToRemove.includes(i)
           bulletsToRemove.push(j);
-          shipsToRemove.push(i);
+          // shipsToRemove.push(i);
           s.hit = true;
         }
         bulletsToAdd.push(
