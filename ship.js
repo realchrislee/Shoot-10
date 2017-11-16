@@ -33,7 +33,7 @@ function Ship(x, tX, y, dX, sprite) {
 let shipArray = [];
 
 function generateShip() {
-  let faceSet = [720, 0];
+  let faceSet = [720, -10];
   let tailSet = [35, -35];
   let shipNum = Math.round(Math.random());
   let frontX = faceSet[shipNum];
@@ -48,6 +48,10 @@ function generateShip() {
   return ship;
 }
 
-setInterval(() => {
-  shipArray.push(generateShip());
-}, 600);
+let paused = false;
+
+if (!paused) {
+  setInterval(() => {
+    shipArray.push(generateShip());
+  }, 600);
+}

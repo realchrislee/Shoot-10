@@ -36,17 +36,17 @@ document.addEventListener('mousedown', (e) => {
   }
 });
 
-function Flash() {
-  this.o = 1;
-  this.draw = function() {
-    ctx.fillStyle = `rgba(255,255,255,${o})`;
-    ctx.fillReact(0, 0, canvas.width, canvas.height);
-  };
-
-  this.update = function() {
-    o -= 1;
-  };
-}
+// function Flash() {
+//   this.o = 1;
+//   this.draw = function() {
+//     ctx.fillStyle = `rgba(255,255,255,${o})`;
+//     ctx.fillReact(0, 0, canvas.width, canvas.height);
+//   };
+//
+//   this.update = function() {
+//     o -= 1;
+//   };
+// }
 
 function Score(score) {
   this.x = 620;
@@ -58,8 +58,11 @@ function Score(score) {
   ctx.fillText(this.score, this.x, this.y);
 }
 
-let background = new Image();
-background.src = './images/Background2.jpg';
+function background() {
+  let background = new Image();
+  background.src = './images/Background2.jpg';
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+}
 
 function removeBullets() {
   bulletsToRemove.forEach(bulletIdx => {
@@ -102,7 +105,7 @@ let score = 0;
 function animateBoard() {
   requestAnimationFrame(animateBoard);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+  background();
   Score(score);
   bulletDisplay.forEach(bullet => {
     bullet.update();
