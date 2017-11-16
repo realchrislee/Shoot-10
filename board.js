@@ -93,7 +93,6 @@ function removeShips() {
 }
 
 function incrementScore() {
-  debugger;
   score++;
 }
 
