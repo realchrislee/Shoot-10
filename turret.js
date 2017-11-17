@@ -32,12 +32,13 @@ function Turret(tH, tW) {
 
   this.clean = function() {
     for (let i = 0; i < this.bullets.length; i++) {
-      if (this.bullets[i].y < -3000 || this.bullets[i].y > 3000 || this.bullets[i].x < -3000 || this.bullets[i].x > 3000) {
-        if (bulletsToRemove.includes(i)) {
-          continue;
-        } else {
-          bulletsToRemove.push(i);
-        }
+      if (this.bullets[i].y < 0 || this.bullets[i].y > canvas.height || this.bullets[i].x < 0 || this.bullets[i].x > canvas.width) {
+        // if (bulletsToRemove.includes(i)) {
+        //   continue;
+        // } else {
+        //   bulletsToRemove.push(i);
+        // }
+        this.bullets[i].offScreen = true;
       }
       if (this.bullets[0] != null) {
         this.bullets[i].update();

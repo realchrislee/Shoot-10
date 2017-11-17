@@ -1,41 +1,3 @@
-// let pressed = false;
-//
-// document.addEventListener('keydown', (e) => {
-//   if (e.keyCode == 32 && pressed == false) {
-//     // bDX = 2;
-//     //limit bullets to 10
-//     if (turret.count >= 10) {
-//       console.log('No more bullets');
-//     } else {
-//       turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
-//       turret.count++;
-//       bulletDisplay.pop();
-//     }
-//     pressed = true;
-//   }
-// });
-//
-// document.addEventListener('keyup', (e) => {
-//   if (e.keyCode == 32) {
-//     pressed = false;
-//   }
-// });
-//
-// document.addEventListener('mousedown', (e) => {
-//   e.preventDefault();
-//   if (e.target.id == 'canvas') {
-//     // bDX = 2;
-//     //limit bullets to 10
-//     if (turret.count >= 10) {
-//       console.log('No more bullets');
-//     } else {
-//       turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
-//       turret.count++;
-//       bulletDisplay.pop();
-//     }
-//   }
-// });
-
 function addListeners() {
   let pressed = false;
 
@@ -94,18 +56,6 @@ document.addEventListener('mousedown', (e) => {
 }, {once: true});
 
 
-function landing() {
-  background();
-  ctx.fillStyle = 'black';
-  ctx.textAlign = 'center';
-  ctx.font = '30px sans-serif';
-  ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 50);
-  ctx.fillText('Click to start', canvas.width/2, 120);
-  ctx.fillText('Left mouse button / spacebar to shoot', canvas.width/2, 190);
-  // ctx.fillText('')
-}
-
-landing();
 
 // function Flash() {
 //   this.o = 1;
@@ -135,10 +85,30 @@ function background() {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 }
 
+function landing() {
+  ctx.fillStyle = 'black';
+  ctx.textAlign = 'center';
+  ctx.font = '30px sans-serif';
+  ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 50);
+  ctx.fillText('Click to start', canvas.width/2, 120);
+  ctx.fillText('Left click / spacebar to shoot', canvas.width/2, 190);
+  ctx.fillStyle = 'blue';
+  ctx.fillRect(0, 0, canvas.width,canvas.heigth);
+}
+
+landing();
+
 function removeBullets() {
-  bulletsToRemove.forEach(bulletIdx => {
-    turret.bullets.splice(bulletIdx, 1);
+  // bulletsToRemove.forEach(bulletIdx => {
+  //   turret.bullets.splice(bulletIdx, 1);
+  // });
+  turret.bullets.forEach((b, i) => {
+    if (b.offScreen || b.hit) {
+      turret.bullets.splice(i, 1);
+      i--;
+    }
   });
+
 
   bulletsToRemove = [];
 }
@@ -157,7 +127,7 @@ function removeShips() {
   // });
 
   shipArray.forEach((s, i) => {
-    if (s.hit) {
+    if (s.hit || s.offScreen) {
       shipArray.splice(i, 1);
       i--;
     }
@@ -208,9 +178,10 @@ function animateBoard() {
             incrementScore();
         if (!bulletsToRemove.includes(j)) {
           // && !shipsToRemove.includes(i)
-          bulletsToRemove.push(j);
+          // bulletsToRemove.push(j);
           // shipsToRemove.push(i);
           s.hit = true;
+          b.hit = true;
         }
         bulletsToAdd.push(
           new Bullet(s.x, s.y, 5),
@@ -242,11 +213,12 @@ function animateBoard() {
 
   shipArray.forEach((s, i) => {
     if (s.x < -10 || s.x > 730) {
-      if (shipsToRemove.includes(i)) {
-        return;
-      } else {
-        shipsToRemove.push(i);
-      }
+      // if (shipsToRemove.includes(i)) {
+      //   return;
+      // } else {
+      //   shipsToRemove.push(i);
+      // }
+      s.offScreen = true;
     } else {
       s.update();
     }
@@ -254,10 +226,12 @@ function animateBoard() {
 
   removeShips();
 
+  if (turret.bullets.length === 0 && turret.count >= 10) {
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
 
-  // if (turret.bullets[0] == null && turret.count >= 10) {
-  //   alert('Game Over!');
-  // }
+  console.log(turret.bullets);
 }
 
 // animateBoard();

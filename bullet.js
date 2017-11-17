@@ -19,6 +19,7 @@ function Bullet(x, y, bDX = 0, bDY = 0) {
   this.bDX = bDX;
   this.bDY = bDY;
   this.hit = false;
+  this.offScreen = false;
 
   // bullet
   this.draw = function() {
