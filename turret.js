@@ -1,7 +1,28 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-console.log(canvas.width);
-console.log(canvas.height);
+
+function background() {
+  let background = new Image();
+  background.src = './images/Background2.jpg';
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+}
+
+
+function landing() {
+  // let background = new Image();
+  // background.src = './images/Background2.jpg';
+  // ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'blue';
+  ctx.textAlign = 'center';
+  ctx.font = '30px sans-serif';
+  ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 70);
+  ctx.fillText('Click to start', canvas.width/2, 140);
+  ctx.fillText('Left click / spacebar to shoot', canvas.width/2, 210);
+}
+
+landing();
 
 let bulletsToRemove = [];
 let shipsToRemove = [];

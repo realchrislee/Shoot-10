@@ -38,13 +38,13 @@ function addListeners() {
   });
 }
 
-function togglePause() {
-  if (paused) {
-    paused = false;
-  } else {
-    paused = true;
-  }
-}
+// function togglePause() {
+//   if (paused) {
+//     paused = false;
+//   } else {
+//     paused = true;
+//   }
+// }
 
 document.addEventListener('mousedown', (e) => {
   e.preventDefault();
@@ -72,31 +72,31 @@ document.addEventListener('mousedown', (e) => {
 function Score(score) {
   this.x = 650;
   this.y = 20;
-  this.score = 'Score: ' + score.toString();
+  this.score = 'Score: ' + score;
 
   ctx.fillStyle = 'black';
   ctx.font = '15px sans-serif';
   ctx.fillText(this.score, this.x, this.y);
 }
 
-function background() {
-  let background = new Image();
-  background.src = './images/Background2.jpg';
-  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-}
-
-function landing() {
-  ctx.fillStyle = 'black';
-  ctx.textAlign = 'center';
-  ctx.font = '30px sans-serif';
-  ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 50);
-  ctx.fillText('Click to start', canvas.width/2, 120);
-  ctx.fillText('Left click / spacebar to shoot', canvas.width/2, 190);
-  ctx.fillStyle = 'blue';
-  ctx.fillRect(0, 0, canvas.width,canvas.heigth);
-}
-
-landing();
+// function background() {
+//   let background = new Image();
+//   background.src = './images/Background2.jpg';
+//   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+// }
+//
+// function landing() {
+//   ctx.fillStyle = 'black';
+//   ctx.textAlign = 'center';
+//   ctx.font = '30px sans-serif';
+//   ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 50);
+//   ctx.fillText('Click to start', canvas.width/2, 120);
+//   ctx.fillText('Left click / spacebar to shoot', canvas.width/2, 190);
+//   ctx.fillStyle = 'blue';
+//   ctx.fillRect(0, 0, canvas.width,canvas.heigth);
+// }
+//
+// landing();
 
 function removeBullets() {
   // bulletsToRemove.forEach(bulletIdx => {
@@ -172,8 +172,8 @@ function animateBoard() {
         b.x > 0 &&
         b.y > 0 &&
         b.y < canvas.height &&
-        s.hit === false
-        // b.hit === false
+        s.hit === false &&
+        b.hit === false
           ){
             incrementScore();
         if (!bulletsToRemove.includes(j)) {
@@ -227,11 +227,11 @@ function animateBoard() {
   removeShips();
 
   if (turret.bullets.length === 0 && turret.count >= 10) {
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // ctx.fillStyle = 'white';
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
+    alert('Game Over! \nYour score: ' + score);
+    document.location.reload();
   }
-
-  console.log(turret.bullets);
 }
 
 // animateBoard();

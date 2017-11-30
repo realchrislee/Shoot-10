@@ -13,7 +13,7 @@ function Ship(x, tX, y, dX, sprite) {
     let image = new Image();
     image.src = this.sprite;
 
-    ctx.fillStyle = 'blue';
+    // ctx.fillStyle = 'blue';
     // ctx.beginPath();
     // ctx.moveTo(this.x, this.y + 10);
     // ctx.lineTo(this.x + this.tX, this.y + 15);
