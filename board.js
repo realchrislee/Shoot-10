@@ -169,7 +169,7 @@ function animateBoard() {
         s.y < b.y + b.h &&
         s.h + s.y > b.y &&
         b.x < canvas.width &&
-        b.x > 0 &&
+        b.x > -10 &&
         b.y > 0 &&
         b.y < canvas.height &&
         s.hit === false &&
