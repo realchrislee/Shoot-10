@@ -6,6 +6,7 @@
     <style type='text/css'>
       body {
         background: #2B4162;
+        margin: 0;
       }
       h1 {
         margin: 0 auto;
@@ -19,14 +20,45 @@
         display: block;
         background: white;
       }
+      footer {
+        height: 80px;
+        width: 100%;
+        background: rgba(0,0,0,.54)!important;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: white;
+      }
+      .wrapper {
+        min-height: calc(100vh - 180px);
+      }
     </style>
   </head>
   <body>
-    <h1>Shoot 10</h1>
-    <canvas id="canvas" width="720" height="320"></canvas>
-    <script src="turret.js"></script>
-    <script src="bullet.js"></script>
-    <script src="ship.js"></script>
-    <script src="board.js"></script>
+    <div class='wrapper'>
+      <h1>Shoot 10</h1>
+      <canvas id="canvas" width="720" height="320"></canvas>
+      <script src="turret.js"></script>
+      <script src="bullet.js"></script>
+      <script src="ship.js"></script>
+      <script src="board.js"></script>
+    </div>
+    <footer>
+      <div>
+        Created By: Chris Lee
+      </div>
+      <div>
+        <a href='https://github.com/realchrislee' target='_blank'>Github</a>
+      </div>
+      <div>
+        <a href='http://www.chrislee.biz/' target='_blank'>Portfolio</a>
+      </div>
+      <div>
+        <a href='https://www.linkedin.com/in/clee92/' target='_blank'>LinkedIn</a>
+      </div>
+      <div>
+        chrislee92@gmail.com
+      </div>
+    </footer>
   </body>
 </html>
