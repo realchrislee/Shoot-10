@@ -143,6 +143,7 @@ function incrementScore() {
 const turret = new Turret(tH);
 
 let score = 0;
+
 function animateBoard() {
   requestAnimationFrame(animateBoard);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -229,8 +230,9 @@ function animateBoard() {
   if (turret.bullets.length === 0 && turret.count >= 10) {
     // ctx.fillStyle = 'white';
     // ctx.fillRect(0, 0, canvas.width, canvas.height);
-    alert('Game Over! \nYour score: ' + score);
+    cancelAnimationFrame(animateBoard);
     document.location.reload();
+    alert('Game Over! \nYour score: ' + score);
   }
 }
 
