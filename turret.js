@@ -53,7 +53,7 @@ function Turret(tH, tW) {
 
   this.clean = function() {
     for (let i = 0; i < this.bullets.length; i++) {
-      if (this.bullets[i].y < 0 || this.bullets[i].y > canvas.height || this.bullets[i].x < 0 || this.bullets[i].x > canvas.width) {
+      if (this.bullets[i].y < -20 || this.bullets[i].y > canvas.height + 10 || this.bullets[i].x < -20 || this.bullets[i].x > canvas.width + 10) {
         // if (bulletsToRemove.includes(i)) {
         //   continue;
         // } else {

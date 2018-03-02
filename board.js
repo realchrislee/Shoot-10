@@ -38,14 +38,6 @@ function addListeners() {
   });
 }
 
-// function togglePause() {
-//   if (paused) {
-//     paused = false;
-//   } else {
-//     paused = true;
-//   }
-// }
-
 document.addEventListener('mousedown', (e) => {
   e.preventDefault();
   if (e.target.id == 'canvas') {
@@ -54,20 +46,6 @@ document.addEventListener('mousedown', (e) => {
     addListeners();
   }
 }, {once: true});
-
-
-
-// function Flash() {
-//   this.o = 1;
-//   this.draw = function() {
-//     ctx.fillStyle = `rgba(255,255,255,${o})`;
-//     ctx.fillReact(0, 0, canvas.width, canvas.height);
-//   };
-//
-//   this.update = function() {
-//     o -= 1;
-//   };
-// }
 
 function Score(score) {
   this.x = 650;
@@ -79,12 +57,6 @@ function Score(score) {
   ctx.fillText(this.score, this.x, this.y);
 }
 
-// function background() {
-//   let background = new Image();
-//   background.src = './images/Background2.jpg';
-//   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-// }
-//
 // function landing() {
 //   ctx.fillStyle = 'black';
 //   ctx.textAlign = 'center';
@@ -99,9 +71,6 @@ function Score(score) {
 // landing();
 
 function removeBullets() {
-  // bulletsToRemove.forEach(bulletIdx => {
-  //   turret.bullets.splice(bulletIdx, 1);
-  // });
   turret.bullets.forEach((b, i) => {
     if (b.offScreen || b.hit) {
       turret.bullets.splice(i, 1);
@@ -144,6 +113,10 @@ const turret = new Turret(tH);
 
 let score = 0;
 
+let isPaused = false;
+
+
+
 function animateBoard() {
   requestAnimationFrame(animateBoard);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -153,11 +126,6 @@ function animateBoard() {
     bullet.update();
   });
   turret.draw();
-  // console.log(turret.bullets);
-  // turret.bullets.forEach(bullet => {
-  //
-  //   bullet.update();
-  // });
 
 
 
@@ -169,18 +137,15 @@ function animateBoard() {
         s.x + s.w > b.x &&
         s.y < b.y + b.h &&
         s.h + s.y > b.y &&
-        b.x < canvas.width &&
-        b.x > -10 &&
-        b.y > 0 &&
-        b.y < canvas.height &&
+        b.x < canvas.width + 10 &&
+        b.x > -20 &&
+        b.y > -20 &&
+        b.y < canvas.height + 10 &&
         s.hit === false &&
         b.hit === false
           ){
             incrementScore();
-        if (!bulletsToRemove.includes(j)) {
-          // && !shipsToRemove.includes(i)
-          // bulletsToRemove.push(j);
-          // shipsToRemove.push(i);
+        if (!bulletsToRemove.includes(j) && !b.hit) {
           s.hit = true;
           b.hit = true;
         }
@@ -202,8 +167,6 @@ function animateBoard() {
           new Bullet(s.x, s.y, -4, -1),
           new Bullet(s.x, s.y, -4, 1)
         );
-        // Flash.draw();
-        // Flash.update();
       }
     }
   });
@@ -213,12 +176,7 @@ function animateBoard() {
   addBullets();
 
   shipArray.forEach((s, i) => {
-    if (s.x < -10 || s.x > 730) {
-      // if (shipsToRemove.includes(i)) {
-      //   return;
-      // } else {
-      //   shipsToRemove.push(i);
-      // }
+    if (s.x < -20 || s.x > canvas.width + 10) {
       s.offScreen = true;
     } else {
       s.update();
@@ -228,8 +186,6 @@ function animateBoard() {
   removeShips();
 
   if (turret.bullets.length === 0 && turret.count >= 10) {
-    // ctx.fillStyle = 'white';
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
     cancelAnimationFrame(animateBoard);
     document.location.reload();
     alert('Game Over! \nYour score: ' + score);
