@@ -6,7 +6,6 @@ function addListeners() {
       // bDX = 2;
       //limit bullets to 10
       if (turret.count >= 10) {
-        console.log('No more bullets');
       } else {
         turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
         turret.count++;
@@ -28,7 +27,6 @@ function addListeners() {
       // bDX = 2;
       //limit bullets to 10
       if (turret.count >= 10) {
-        console.log('No more bullets');
       } else {
         turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
         turret.count++;
@@ -118,7 +116,7 @@ let isPaused = false;
 
 
 function animateBoard() {
-  requestAnimationFrame(animateBoard);
+  frame = requestAnimationFrame(animateBoard);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   background();
   Score(score);
@@ -186,9 +184,11 @@ function animateBoard() {
   removeShips();
 
   if (turret.bullets.length === 0 && turret.count >= 10) {
-    cancelAnimationFrame(animateBoard);
+    console.log('hit');
+    cancelAnimationFrame(frame);
     document.location.reload();
     alert('Game Over! \nYour score: ' + score);
+    return;
   }
 }
 
