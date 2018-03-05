@@ -36,8 +36,9 @@ function addListeners() {
   });
 }
 
-document.addEventListener('mousedown', (e) => {
+canvas.addEventListener('mousedown', (e) => {
   e.preventDefault();
+  console.log('mouseclick');
   if (e.target.id == 'canvas') {
     startShip();
     animateBoard();
@@ -54,19 +55,6 @@ function Score(score) {
   ctx.font = '15px sans-serif';
   ctx.fillText(this.score, this.x, this.y);
 }
-
-// function landing() {
-//   ctx.fillStyle = 'black';
-//   ctx.textAlign = 'center';
-//   ctx.font = '30px sans-serif';
-//   ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 50);
-//   ctx.fillText('Click to start', canvas.width/2, 120);
-//   ctx.fillText('Left click / spacebar to shoot', canvas.width/2, 190);
-//   ctx.fillStyle = 'blue';
-//   ctx.fillRect(0, 0, canvas.width,canvas.heigth);
-// }
-//
-// landing();
 
 function removeBullets() {
   turret.bullets.forEach((b, i) => {

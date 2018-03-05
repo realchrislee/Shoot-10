@@ -49,21 +49,21 @@ function generateShip() {
   return ship;
 }
 
-let paused = false;
+let onScreen = false;
 
 window.onblur = function() {
-  paused = true;
-  console.log(paused);
+  onScreen = false;
+  console.log(onScreen);
 };
 
 window.onfocus = function() {
-  paused = false;
-  console.log(paused);
+  onScreen = true;
+  console.log(onScreen);
 };
 
 function startShip() {
   setInterval(() => {
-    if(!paused) {
+    if(onScreen) {
       shipArray.push(generateShip());
     }
   }, 600);
