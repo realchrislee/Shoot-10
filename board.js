@@ -1,4 +1,5 @@
 function addListeners() {
+  console.log('listener');
   let pressed = false;
 
   document.addEventListener('keydown', (e) => {
@@ -21,24 +22,23 @@ function addListeners() {
     }
   });
 
-  document.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    if (e.target.id == 'canvas') {
-      // bDX = 2;
-      //limit bullets to 10
-      if (turret.count >= 10) {
-      } else {
-        turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
-        turret.count++;
-        bulletDisplay.pop();
-      }
-    }
-  });
+  // document.addEventListener('mousedown', (e) => {
+  //   e.preventDefault();
+  //   if (e.target.id == 'canvas') {
+  //     // bDX = 2;
+  //     //limit bullets to 10
+  //     if (turret.count >= 10) {
+  //     } else {
+  //       turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
+  //       turret.count++;
+  //       bulletDisplay.pop();
+  //     }
+  //   }
+  // });
 }
 
 canvas.addEventListener('mousedown', (e) => {
   e.preventDefault();
-  console.log('mouseclick');
   if (e.target.id == 'canvas') {
     startShip();
     animateBoard();

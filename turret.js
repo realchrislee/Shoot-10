@@ -19,7 +19,7 @@ function landing() {
   ctx.font = '30px sans-serif';
   ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 70);
   ctx.fillText('Click HERE to start', canvas.width/2, 140);
-  ctx.fillText('Left click / spacebar to shoot', canvas.width/2, 210);
+  ctx.fillText('Spacebar to shoot', canvas.width/2, 210);
 }
 
 landing();
