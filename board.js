@@ -1,5 +1,4 @@
 function addListeners() {
-  console.log('listener');
   let pressed = false;
 
   document.addEventListener('keydown', (e) => {
@@ -37,12 +36,16 @@ function addListeners() {
   // });
 }
 
+function runGame() {
+  startShip();
+  animateBoard();
+  addListeners();
+}
+
 canvas.addEventListener('mousedown', (e) => {
   e.preventDefault();
   if (e.target.id == 'canvas') {
-    startShip();
-    animateBoard();
-    addListeners();
+    runGame();
   }
 }, {once: true});
 
