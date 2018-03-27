@@ -49,16 +49,14 @@ function generateShip() {
   return ship;
 }
 
-let onScreen = false;
+let onScreen = true;
 
 window.onblur = function() {
   onScreen = false;
-  console.log(onScreen);
 };
 
 window.onfocus = function() {
   onScreen = true;
-  console.log(onScreen);
 };
 
 function startShip() {

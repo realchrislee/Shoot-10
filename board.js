@@ -138,24 +138,29 @@ function animateBoard() {
           s.hit = true;
           b.hit = true;
         }
-        bulletsToAdd.push(
-          new Bullet(s.x, s.y, 5),
-          new Bullet(s.x, s.y, -5),
-          new Bullet(s.x, s.y, 0, 5),
-          new Bullet(s.x, s.y, 0, -5),
-          new Bullet(s.x, s.y, 2, 2),
-          new Bullet(s.x, s.y, -2, -2),
-          new Bullet(s.x, s.y, 2, -2),
-          new Bullet(s.x, s.y, -2, 2),
-          new Bullet(s.x, s.y, 1, 4),
-          new Bullet(s.x, s.y, -1, 4),
-          new Bullet(s.x, s.y, 1, -4),
-          new Bullet(s.x, s.y, -1, -4),
-          new Bullet(s.x, s.y, 4, 1),
-          new Bullet(s.x, s.y, 4, -1),
-          new Bullet(s.x, s.y, -4, -1),
-          new Bullet(s.x, s.y, -4, 1)
-        );
+        for (i = 0; i < 16; i++) {
+          bulletsToAdd.push(
+            new Debris(s.x, s.y, 22.5 * i+1)
+          );
+        }
+        // bulletsToAdd.push(
+        //   new Bullet(s.x, s.y, 5),
+        //   new Bullet(s.x, s.y, -5),
+        //   new Bullet(s.x, s.y, 0, 5),
+        //   new Bullet(s.x, s.y, 0, -5),
+        //   new Bullet(s.x, s.y, 2, 2),
+        //   new Bullet(s.x, s.y, -2, -2),
+        //   new Bullet(s.x, s.y, 2, -2),
+        //   new Bullet(s.x, s.y, -2, 2),
+        //   new Bullet(s.x, s.y, 1, 4),
+        //   new Bullet(s.x, s.y, -1, 4),
+        //   new Bullet(s.x, s.y, 1, -4),
+        //   new Bullet(s.x, s.y, -1, -4),
+        //   new Bullet(s.x, s.y, 4, 1),
+        //   new Bullet(s.x, s.y, 4, -1),
+        //   new Bullet(s.x, s.y, -4, -1),
+        //   new Bullet(s.x, s.y, -4, 1)
+        // );
       }
     }
   });

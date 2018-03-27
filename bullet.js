@@ -36,3 +36,25 @@ function Bullet(x, y, bDX = 0, bDY = 0) {
     this.draw();
   };
 }
+
+function Debris(x, y, angle) {
+  this.x = x;
+  this.y = y;
+  this.w = 6;
+  this.h = 4;
+  this.bDX = Math.cos(angle/180*Math.PI) * 3;
+  this.bDY = Math.sin(angle/180*Math.PI) * 3;
+  this.hit = false;
+  this.offScreen = false;
+
+  this.draw = function() {
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(this.x+1, this.y+10, this.w, this.h);
+  };
+
+  this.update = function() {
+    this.y -= this.bDY;
+    this.x -= this.bDX;
+    this.draw();
+  };
+}
