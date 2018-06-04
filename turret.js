@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 
 function background() {
   let background = new Image();
-  background.src = './images/Background2.jpg';
+  background.src = './images/Background3.png';
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 }
 
@@ -14,7 +14,7 @@ function landing() {
   // ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'blue';
+  ctx.fillStyle = 'white';
   ctx.textAlign = 'center';
   ctx.font = '30px sans-serif';
   ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 70);

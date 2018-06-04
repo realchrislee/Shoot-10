@@ -50,11 +50,11 @@ canvas.addEventListener('mousedown', (e) => {
 }, {once: true});
 
 function Score(score) {
-  this.x = 650;
+  this.x = 635;
   this.y = 20;
-  this.score = 'Score: ' + score;
+  this.score = 'Ships Destroyed: ' + score;
 
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = 'white';
   ctx.font = '15px sans-serif';
   ctx.fillText(this.score, this.x, this.y);
 }

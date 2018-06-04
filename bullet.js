@@ -42,13 +42,13 @@ function Debris(x, y, angle) {
   this.y = y;
   this.w = 6;
   this.h = 4;
-  this.bDX = Math.cos(angle/180*Math.PI) * 3;
-  this.bDY = Math.sin(angle/180*Math.PI) * 3;
+  this.bDX = Math.cos(angle/180*Math.PI) * 6;
+  this.bDY = Math.sin(angle/180*Math.PI) * 6;
   this.hit = false;
   this.offScreen = false;
 
   this.draw = function() {
-    ctx.fillStyle = 'blue';
+    ctx.fillStyle = 'yellow';
     ctx.fillRect(this.x+1, this.y+10, this.w, this.h);
   };
 
