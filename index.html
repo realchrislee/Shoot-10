@@ -11,13 +11,21 @@
       h1 {
         margin: 0 auto;
         font-size: 70px;
-        width: 260px;
-        color: rgba(255,255,255,.6);
+        width: 300px;
+        color: rgba(255,255,255,1);
+        font-family: Arial, sans-serif;
       }
+      h2, h3 {
+        color: white;
+        font-size: 30px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+
       canvas {
         border: 5px solid white;
         border-radius: 10px;
-        margin: 50px auto 50px auto;
+        margin: 40px auto 40px auto;
         display: block;
         background: white;
       }
@@ -46,7 +54,9 @@
   <body>
     <div class='wrapper'>
       <h1>Shoot 10</h1>
+      <h2>How many ships can you kill with 10 bullets?</h2>
       <canvas id="canvas" width="720" height="320"></canvas>
+      <h3>Spacebar to shoot</h3>
       <script src="turret.js"></script>
       <script src="bullet.js"></script>
       <script src="ship.js"></script>

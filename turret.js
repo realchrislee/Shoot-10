@@ -16,10 +16,8 @@ function landing() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = 'white';
   ctx.textAlign = 'center';
-  ctx.font = '30px sans-serif';
-  ctx.fillText('How many ships can you kill with 10 bullets?', canvas.width/2, 70);
-  ctx.fillText('Click HERE to start', canvas.width/2, 140);
-  ctx.fillText('Spacebar to shoot', canvas.width/2, 210);
+  ctx.font = '40px sans-serif';
+  ctx.fillText('Click HERE to start', canvas.width/2, canvas.height/2);
 }
 
 landing();
