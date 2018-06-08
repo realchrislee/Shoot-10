@@ -4,22 +4,31 @@
     <meta charset="utf-8">
     <title>Shoot 10</title>
     <style type='text/css'>
+      @font-face {
+        font-family: Neuron;
+        src: url(fonts/Neuron.otf);
+      }
+      @font-face {
+        font-family: Ultra;
+        src: url(fonts/Ultra.otf);
+      }
+      div {
+        font-family: Neuron;
+      }
       body {
         background: black;
         margin: 0;
       }
       h1 {
-        margin: 0 auto;
-        font-size: 70px;
-        width: 300px;
+        margin: 10px auto;
+        font-size: 90px;
+        width: 350px;
         color: rgba(255,255,255 ,1);
-        font-family: Arial, sans-serif;
       }
       h2, h3 {
         color: white;
         font-size: 30px;
         text-align: center;
-        font-family: Arial, sans-serif;
       }
 
       canvas {
@@ -54,7 +63,7 @@
   <body>
     <div class='wrapper'>
       <h1>Shoot 10</h1>
-      <h2>How many ships can you kill with 10 bullets?</h2>
+      <h2>How many ships can you destroy with 10 bullets?</h2>
       <canvas id="canvas" width="720" height="320"></canvas>
       <h3>Spacebar to shoot</h3>
       <script src="turret.js"></script>
