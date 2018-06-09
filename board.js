@@ -7,7 +7,7 @@ function addListeners() {
       //limit bullets to 10
       if (turret.count >= 10) {
       } else {
-        turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
+        turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 7));
         turret.count++;
         bulletDisplay.pop();
       }
