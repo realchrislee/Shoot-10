@@ -9,9 +9,6 @@ function background() {
 
 
 function landing() {
-  // let background = new Image();
-  // background.src = './images/Background2.jpg';
-  // ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = 'white';

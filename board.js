@@ -2,9 +2,7 @@ function addListeners() {
   let pressed = false;
 
   document.addEventListener('keydown', (e) => {
-    if (e.keyCode == 32 && pressed == false) {
-      // bDX = 2;
-      //limit bullets to 10
+    if (e.keyCode == 32 && !pressed) {
       if (turret.count >= 10) {
       } else {
         turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 7));
@@ -20,20 +18,6 @@ function addListeners() {
       pressed = false;
     }
   });
-
-  // document.addEventListener('mousedown', (e) => {
-  //   e.preventDefault();
-  //   if (e.target.id == 'canvas') {
-  //     // bDX = 2;
-  //     //limit bullets to 10
-  //     if (turret.count >= 10) {
-  //     } else {
-  //       turret.bullets.push(new Bullet(((canvas.width/2) - 5), (canvas.height - tH), 0, 6));
-  //       turret.count++;
-  //       bulletDisplay.pop();
-  //     }
-  //   }
-  // });
 }
 
 function runGame() {
@@ -42,9 +26,33 @@ function runGame() {
   addListeners();
 }
 
+function Sounds(maxSize) {
+  let size = maxSize;
+  let pool = [];
+  this.pool = pool;
+  let currSound = 0;
+
+  this.init = function() {
+    for (let i = 0; i < size; i++) {
+      let explosion = new Audio('sounds/explosion.mp3');
+      pool.push(explosion);
+    }
+  };
+
+  this.get = function() {
+    if (pool[currSound].currentTime == 0 || pool[currSound].ended) {
+      pool[currSound].play();
+    }
+    currSound = (currSound + 1) % size;
+  };
+}
+
+let explosion = new Sounds(20);
+
 canvas.addEventListener('mousedown', (e) => {
   e.preventDefault();
   if (e.target.id == 'canvas') {
+    explosion.init();
     runGame();
   }
 }, {once: true});
@@ -137,6 +145,7 @@ function animateBoard() {
         if (!bulletsToRemove.includes(j) && !b.hit) {
           s.hit = true;
           b.hit = true;
+          explosion.get();
         }
         for (i = 0; i < 16; i++) {
           bulletsToAdd.push(
