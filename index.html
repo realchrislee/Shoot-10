@@ -46,6 +46,17 @@
         display: block;
         background: white;
       }
+      .game {
+        width: 720px;
+        height: 320px;
+        margin: 40px auto 40px auto;
+        position: relative;
+      }
+      button {
+        position: absolute;
+        bottom: -32px;
+        left: 0px;
+      }
       footer {
         position: fixed;
         bottom: 0;
@@ -69,10 +80,16 @@
     </style>
   </head>
   <body>
+    <audio autoplay loop>
+      <source src='sounds/jacobspiano.mp3'>
+    </audio>
     <div class='wrapper'>
       <h1>Shoot 10</h1>
       <h2>How many ships can you destroy with 10 bullets?</h2>
-      <canvas id="canvas" width="720" height="320"></canvas>
+      <div class='game'>
+        <canvas id="canvas" width="720" height="320"></canvas>
+        <button id='mute'>Mute</button>
+      </div>
       <h3>Spacebar to shoot</h3>
       <script src="turret.js"></script>
       <script src="bullet.js"></script>

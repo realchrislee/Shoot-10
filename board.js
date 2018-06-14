@@ -18,6 +18,9 @@ function addListeners() {
       pressed = false;
     }
   });
+  document.getElementById('mute').addEventListener('click', (e) => {
+      muted = !muted;
+  });
 }
 
 function runGame() {
@@ -145,7 +148,9 @@ function animateBoard() {
         if (!bulletsToRemove.includes(j) && !b.hit) {
           s.hit = true;
           b.hit = true;
-          explosion.get();
+          if (!muted) {
+            explosion.get();
+          }
         }
         for (i = 0; i < 16; i++) {
           bulletsToAdd.push(
