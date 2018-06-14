@@ -52,6 +52,7 @@ let explosion = new Sounds(20);
 canvas.addEventListener('mousedown', (e) => {
   e.preventDefault();
   if (e.target.id == 'canvas') {
+    music.play();
     explosion.init();
     runGame();
   }
