@@ -1,8 +1,16 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
-let muted = false;
 let music = document.getElementById('music');
+
+document.getElementById('mute').addEventListener('mousedown', (e) => {
+  if (!music.muted) {
+    music.muted = !music.muted;
+  } else {
+    music.currentTime = 0;
+    music.muted = !music.muted;
+  }
+});
 
 function background() {
   let background = new Image();

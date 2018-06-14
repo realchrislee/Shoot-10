@@ -18,10 +18,6 @@ function addListeners() {
       pressed = false;
     }
   });
-  document.getElementById('mute').addEventListener('mousedown', (e) => {
-    music.muted = !music.muted;
-    muted = !muted;
-  });
 }
 
 function runGame() {
@@ -149,7 +145,7 @@ function animateBoard() {
         if (!bulletsToRemove.includes(j) && !b.hit) {
           s.hit = true;
           b.hit = true;
-          if (!muted) {
+          if (!music.muted) {
             explosion.get();
           }
         }
