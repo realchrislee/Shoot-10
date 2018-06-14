@@ -18,8 +18,9 @@ function addListeners() {
       pressed = false;
     }
   });
-  document.getElementById('mute').addEventListener('click', (e) => {
-      muted = !muted;
+  document.getElementById('mute').addEventListener('mousedown', (e) => {
+    music.muted = !music.muted;
+    muted = !muted;
   });
 }
 

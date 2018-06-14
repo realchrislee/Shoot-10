@@ -2,7 +2,7 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
 let muted = false;
-let music = document.getElementById('main-theme');
+let music = document.getElementById('music');
 
 function background() {
   let background = new Image();
