@@ -1,8 +1,8 @@
-# Shoot-10
+# Shoot10
 
-Shoot-10 is a game based on 10 bullets. The user shoots ships and they explode causing debris to hit other ships into a chain reaction.
+Shoot10 is a game based on 10 bullets. The user shoots ships and they explode causing debris to hit other ships into a chain reaction.
 
-[Live Link](https://realchrislee.github.io/Shoot-10/)
+[Live Link](https://realchrislee.github.io/Shoot10/)
 
 ## MVPs
   * User can press the spacebar to shoot a bullet straight into the air from the middle of the screen.
