@@ -16,6 +16,9 @@ function background() {
   let background = new Image();
   background.src = './images/Background3.png';
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'white';
+  ctx.font = '15px sans-serif';
+  ctx.fillText('Bullets: ', 30, 20);
 }
 
 
