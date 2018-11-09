@@ -15,7 +15,7 @@ Shoot10 is a game based on 10 bullets. The user shoots ships and they explode ca
 
 ## Technlogies, Libraries, APIs
 
-The backend of the game will be built with JavaScript and the frontend will be rendered using the Easel.JS API to render the ships and debris.
+The backend of the game will be built with JavaScript and the frontend will be rendered using the canvas to render the ships and debris.
 
 ## Wireframes
 
