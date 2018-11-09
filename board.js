@@ -113,20 +113,7 @@ let score = 0;
 
 let isPaused = false;
 
-
-
-function animateBoard() {
-  frame = requestAnimationFrame(animateBoard);
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  background();
-  Score(score);
-  bulletDisplay.forEach(bullet => {
-    bullet.update();
-  });
-  turret.draw();
-
-
-
+function checkCollision() {
   shipArray.forEach((s, i) => {
     for (let j = 0; j < turret.bullets.length; j++) {
       let b = turret.bullets[j];
@@ -141,8 +128,8 @@ function animateBoard() {
         b.y < canvas.height + 10 &&
         s.hit === false &&
         b.hit === false
-          ){
-            incrementScore();
+      ){
+        incrementScore();
         if (!bulletsToRemove.includes(j) && !b.hit) {
           s.hit = true;
           b.hit = true;
@@ -158,6 +145,18 @@ function animateBoard() {
       }
     }
   });
+}
+
+function animateBoard() {
+  frame = requestAnimationFrame(animateBoard);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  background();
+  Score(score);
+  bulletDisplay.forEach(bullet => {
+    bullet.update();
+  });
+  turret.draw();
+  checkCollision();
   turret.clean();
   removeShips();
   removeBullets();
@@ -174,7 +173,6 @@ function animateBoard() {
   removeShips();
 
   if (turret.bullets.length === 0 && turret.count >= 10) {
-    console.log('hit');
     cancelAnimationFrame(frame);
     document.location.reload();
     alert('Game Over! \nYour score: ' + score);
